@@ -5,6 +5,12 @@
  * Date: 28.11.18
  * Time: 16:23
  */
+require  'vendor/autoload.php';
+use Google\Spreadsheet\DefaultServiceRequest;
+use Google\Spreadsheet\ServiceRequestFactory;
+putenv('GOOGLE_APPLICATION_CREDENTIALS=' . __DIR__ . '/endpoint-file.json');
+/*  SEND TO GOOGLE SHEETS */
+$client = new Google_Client;
 
 $input = json_encode($_POST, true);
 $data = json_decode($input, TRUE);
@@ -20,10 +26,6 @@ if (!in_array($data['city'], $validCodes)) {
     array_push($error, ['type' => 'city','description' => 'Wrong city ID']);
 };
 
-//if (!$data['city'] == ('od' || 'kv' || 'kh' || 'dp' || 'vn')) {
-//    array_push($error, ['type' => 'city','description' => 'Wrong city ID']);
-//}
-
 $reg = "/^\(\+380\)\d{9}$/i";
 if (!preg_match_all($reg,$data['phone'])){
     array_push($error, ['type' => 'phone','description' => 'The phone must be written in the format (+380)XXXXXXXXX']);
@@ -32,13 +34,6 @@ if (!preg_match_all($reg,$data['phone'])){
 if (!filter_var($data['e-mail'], FILTER_VALIDATE_EMAIL)) {
     array_push($error, ['type' => 'e-mail','description' => 'Invalid email format']);
 }
-
-require  'vendor/autoload.php';
-use Google\Spreadsheet\DefaultServiceRequest;
-use Google\Spreadsheet\ServiceRequestFactory;
-putenv('GOOGLE_APPLICATION_CREDENTIALS=' . __DIR__ . '/endpoint-file.json');
-/*  SEND TO GOOGLE SHEETS */
-$client = new Google_Client;
 
 if (empty($error)) {
 
