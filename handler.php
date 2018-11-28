@@ -12,7 +12,7 @@ $data = json_decode($input, TRUE);
 $error = [];
 
 if (!$data['city'] || !$data['phone'] || !$data['name'] || !$data['e-mail']) {
-    array_push($error, "Need to fill in all forms");
+    array_push($error, ['type:forms','description:Need to fill in all forms']);
 }
 
 if (!$data['city'] == ('od' || 'kv' || 'kh' || 'dp' || 'vn')) {

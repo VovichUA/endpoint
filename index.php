@@ -24,20 +24,21 @@
             <div class="col-md-6 mb-3">
                 <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Выбрать город</label>
                 <select class="custom-select mr-sm-2" id="city" name="city">
-                    <option selected>od</option>
+                    <option value="">Выберите город</option>
                     <option value="vn">vn</option>
                     <option value="kv">kh</option>
                     <option value="dp">dp</option>
                     <option value="kp">kp</option>
+                    <option value="od">od</option>
                 </select>
             </div>
             <div class="col-md-6 mb-3">
                 <label>Телефон в формате (+380)XXXXXXXXX</label>
-                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Телефон в формате (+380)XXXXXXXXX" pattern="/^\(\+380\)\d{9}$/i" required>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Телефон в формате (+380)XXXXXXXXX">
             </div>
             <div class="col-md-6 mb-3">
                 <label for="validationCustom03">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
             </div>
             <div class="col-md-6 mb-3">
                 <label for="exampleInputEmail1">Email address</label>
