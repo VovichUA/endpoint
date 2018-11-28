@@ -59,6 +59,17 @@ if (empty($error)) {
         $worksheets = $spreadsheet->getWorksheetFeed()->getEntries();
         $worksheet = $worksheets[0];
         $listFeed = $worksheet->getListFeed();
+        if ($data['city'] == 'od') {
+            $data['city'] = 'Одесса';
+        } elseif ($data['city'] == 'kv') {
+            $data['city'] = 'Киев';
+        } elseif ($data['city'] == 'kh') {
+            $data['city'] = 'Харьков';
+        } elseif ($data['city'] == 'dp') {
+            $data['city'] = 'Днепр';
+        } else {
+            $data['city'] = 'Винница';
+        }
         $listFeed->insert([
             'date' => Date('Y-m-d H:i:s'),
             'city' => $data['city'],
