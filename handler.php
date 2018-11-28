@@ -75,7 +75,7 @@ if (empty($error)) {
             'mail' => $data['e-mail']
         ]);
 
-        echo "<pre>";
+        header('Content-Type: application/json');
         echo json_encode(['status' => 'ok']);
 
 
@@ -84,7 +84,7 @@ if (empty($error)) {
 
     }
 } else {
-    echo "<pre>";
-    echo json_encode([ 'status' => 'error', 'errors' => [$error]], JSON_PRETTY_PRINT);
+    header('Content-Type: application/json');
+    echo json_encode([ 'status' => 'error', 'errors' => [$error]]);
 }
 
